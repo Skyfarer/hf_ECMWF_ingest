@@ -1,0 +1,11 @@
+[Unit]
+Description=Fetch ECMWF forecast and build forecast.grid
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=jeremy
+Group=docker
+ExecStart=/usr/local/bin/hf-ingest

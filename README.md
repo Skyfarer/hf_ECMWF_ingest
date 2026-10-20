@@ -1,4 +1,4 @@
-# ECMWF-to-Redis
+# forecast-ingest
 I'm working on a project that requires global temperature, dewpoint and wind forecasts. As a private pilot,
 the ECMWF has proven to be very reliable for long range planning. It's not for
 making "go/no go" decisions before I launch in my plane. But, when looking

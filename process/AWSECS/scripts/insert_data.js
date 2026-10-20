@@ -3,7 +3,8 @@ const readline = require('readline');
 const Redis = require('ioredis');
 const ngeohash = require('ngeohash');
 
-const FORECAST_INTERVAL = process.env.FORECAST_INTERVAL;
+//const FORECAST_INTERVAL = process.env.FORECAST_INTERVAL;
+const FORECAST_INTERVAL = process.argv[3] 
 const REDIS_HOST = process.env.REDIS_HOST;
 const shortNames = ['2t','2d','10u','10v','tp']
 const redis = new Redis({
@@ -41,7 +42,7 @@ rl.on('line', (line) => {
     if (counter >= 1000) {
       pipeline.exec()
         .then(() => {
-          console.log('Flushed pipeline with 1,000 commands.');
+          //console.log('Flushed pipeline with 1,000 commands.');
         })
         .catch((error) => {
           console.error('Error executing pipeline:', error);
@@ -57,7 +58,7 @@ rl.on('close', () => {
   if (counter > 0) {
     pipeline.exec()
       .then(() => {
-        console.log('Final flush of remaining commands.');
+        //console.log('Final flush of remaining commands.');
         redis.quit(); // Close the Redis connection
       })
       .catch((error) => {
@@ -67,6 +68,7 @@ rl.on('close', () => {
   } else {
     redis.quit(); // Close Redis connection if no remaining commands
   }
+  console.log("Completed insert for "+FORECAST_INTERVAL);
 });
 
 rl.on('error', (error) => {

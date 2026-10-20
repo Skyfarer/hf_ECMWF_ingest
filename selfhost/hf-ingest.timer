@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily forecast ingest (00Z run is published about 8h after 00Z)
+
+[Timer]
+OnCalendar=*-*-* 09:00:00 UTC
+RandomizedDelaySec=5min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
