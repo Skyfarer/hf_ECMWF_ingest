@@ -1,9 +1,9 @@
 [Unit]
-Description=Daily forecast ingest (00Z run is published about 8h after 00Z)
+Description=Ingest ECMWF forecast and build forecast.grid (retries through the publish window)
 
 [Timer]
-OnCalendar=*-*-* 09:00:00 UTC
-RandomizedDelaySec=5min
+OnCalendar=*-*-* 07..16:0/20:00 UTC
+RandomizedDelaySec=2min
 Persistent=true
 
 [Install]
